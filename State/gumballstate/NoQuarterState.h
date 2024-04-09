@@ -1,5 +1,4 @@
-#ifndef NO_QUARTER_STATE_H
-#define NO_QUARTER_STATE_H
+#pragma once
 #include "State.h"
 #include <ostream>
 class GumballMachine;
@@ -16,5 +15,3 @@ class No_quarter_state : public State_base_with_delegated_context_fns {
 	protected:
         void to_string(std::ostream &) const override;
 };
-
-#endif /* NO_QUARTER_STATE_H */
