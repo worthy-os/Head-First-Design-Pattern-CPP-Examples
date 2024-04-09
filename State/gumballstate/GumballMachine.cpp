@@ -2,7 +2,7 @@
 #include "HasQuarterState.h"
 #include "NoQuarterState.h"
 #include "SoldOutState.h"
-#include "SoldState.h"
+#include "we_made_a_sale_state.h"
 #include <cassert>
 #include <iostream>
 #include <memory>
@@ -20,15 +20,15 @@ GumballMachine::GumballMachine (int numberOfBalls)
 }
 
 void GumballMachine::insert_quarter () {         // Most machine operations are delegated to the state's fns, but not getCount?? TODO?: why?!
-    current_state_ptr_->insertQuarter ();
+    current_state_ptr_->insert_quarter ();
 }
 
 void GumballMachine::eject_quarter () {
-    current_state_ptr_->ejectQuarter ();
+    current_state_ptr_->eject_quarter ();
 }
 
 void GumballMachine::turn_crank () {
-    current_state_ptr_->turnCrank ();
+    current_state_ptr_->turn_crank ();
     current_state_ptr_->dispense ();
 }
 
