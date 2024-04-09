@@ -1,5 +1,4 @@
-#ifndef GUMBALL_MACHINE_H
-#define GUMBALL_MACHINE_H
+#pragma once
 #include "State.h"
 #include <ostream>
 #include <memory>
@@ -31,5 +30,3 @@ public:
     State_base_with_delegated_context_fns *get_we_have_sale_state_uptr() const;
     friend std::ostream& operator<<(std::ostream &, const GumballMachine &);
 };
-
-#endif /* GUMBALL_MACHINE_H */

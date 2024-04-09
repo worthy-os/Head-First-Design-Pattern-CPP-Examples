@@ -2,21 +2,7 @@
 #include "GumballMachine.h"
 #include <iostream>
 
-We_have_a_sale_state::We_have_a_sale_state(GumballMachine *gbm)
-    : gumball_machine_ptr_(gbm) {
-}
-
-void We_have_a_sale_state::insert_quarter() {
-    std::cout << "Please wait, we're already giving you a gumball\n";
-}
-
-void We_have_a_sale_state::eject_quarter() {
-    std::cout << "Sorry, you already turned the crank\n";
-}
-
-void We_have_a_sale_state::turn_crank() {
-    std::cout << "Your error, you may not turn twice.\n";
-}
+We_have_a_sale_state::We_have_a_sale_state(GumballMachine *gbm) : gumball_machine_ptr_(gbm) {}
 
 void We_have_a_sale_state::dispense() {
     gumball_machine_ptr_->release_ball();
@@ -28,9 +14,12 @@ void We_have_a_sale_state::dispense() {
     }
 }
 
-void We_have_a_sale_state::refill () {
-}
+void We_have_a_sale_state::insert_quarter() { std::cout << "Please wait, we're already giving you a gumball\n"; }
 
-void We_have_a_sale_state::to_string(std::ostream &os) const {
-    os << "waiting for quarter";
-}
+void We_have_a_sale_state::eject_quarter() { std::cout << "Sorry, you already turned the crank\n"; }
+
+void We_have_a_sale_state::turn_crank() { std::cout << "Your error, you may not turn twice.\n"; }
+
+void We_have_a_sale_state::refill () {}
+
+void We_have_a_sale_state::to_string(std::ostream &os) const { os << "waiting for quarter"; }

@@ -1,5 +1,4 @@
-#ifndef STATE_H
-#define STATE_H
+#pragma once
 #include <ostream>
 class State_base_with_delegated_context_fns {
 public:
@@ -18,5 +17,3 @@ inline std::ostream& operator<<(std::ostream& os, const State_base_with_delegate
     state.to_string(os);
 	return os;
 }
-
-#endif /* STATE_H */

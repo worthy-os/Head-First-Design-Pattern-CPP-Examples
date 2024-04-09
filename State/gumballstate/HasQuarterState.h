@@ -1,5 +1,4 @@
-#ifndef HAS_QUARTER_STATE_H
-#define HAS_QUARTER_STATE_H
+#pragma once
 #include "State.h"
 #include <ostream>
 class GumballMachine;
@@ -16,5 +15,3 @@ public:
 protected:
     void to_string(std::ostream &) const override;
 };
-
-#endif /* HAS_QUARTER_STATE_H */

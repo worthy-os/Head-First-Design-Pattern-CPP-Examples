@@ -1,25 +1,18 @@
 #ifndef GUMBALL_MACHINE_H
 #define GUMBALL_MACHINE_H
-
 #include <iostream>
 
 class GumballMachine {
 public:
-    GumballMachine (int c) : count (c) {
-        if (count > 0) state = NO_QUARTER;  // Moving from initial SOLD_OUT state.
-    }
+    GumballMachine (int c) : count (c) { if (count > 0) state = NO_QUARTER; }  // Moving from initial SOLD_OUT state.
     void insertQuarter ();
     void ejectQuarter ();
     void turnCrank ();
     void dispense ();
     void refill (int numberOfGumballs);
 private:
-    static constexpr int SOLD_OUT       = 0;
-    static constexpr int NO_QUARTER     = 1;
-    static constexpr int HAS_QUARTER    = 2;
-    static constexpr int WE_HAVE_A_SALE = 3;
-    int                  state          = SOLD_OUT;
-    int                  count          = 0;
+    static constexpr int SOLD_OUT{0}, NO_QUARTER = 1, HAS_QUARTER = 2, WE_HAVE_A_SALE = 3;
+    int                  state = SOLD_OUT, count  = 0;
     friend std::ostream &operator<< (std::ostream &, GumballMachine &);
 };
 
@@ -80,5 +73,4 @@ inline std::ostream & operator<< (std::ostream &os, GumballMachine &gumballMachi
     os << "\n";
     return os;
 }
-
 #endif /* GUMBALL_MACHINE_H */
