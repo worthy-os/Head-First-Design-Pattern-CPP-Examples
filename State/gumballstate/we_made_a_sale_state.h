@@ -7,7 +7,7 @@ class GumballMachine;
 class We_have_a_sale_state : public State_base_with_delegated_context_fns {
     GumballMachine * gumball_machine_ptr_;
 public:
-    explicit We_have_a_sale_state (GumballMachine *gbm);
+    explicit We_have_a_sale_state (GumballMachine *);
     void insert_quarter () override;
     void eject_quarter () override;
     void turn_crank () override;
