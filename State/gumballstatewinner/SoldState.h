@@ -6,10 +6,10 @@
 
 class GumballMachine;
 
-class SoldState : public State {
+class We_have_a_sale_state : public State {
 	public:
-		SoldState() = default;
-		SoldState(GumballMachine *gbm);
+		We_have_a_sale_state() = default;
+		We_have_a_sale_state(GumballMachine *gbm);
 		void insertQuarter() override;
 		void ejectQuarter() override;
 		void turnCrank() override;

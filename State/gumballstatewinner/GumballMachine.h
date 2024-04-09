@@ -8,7 +8,7 @@
 class NoQuarterState;
 class HasQuarterState;
 class SoldOutState;
-class SoldState;
+class We_have_a_sale_state;
 
 class GumballMachine {
 	friend std::ostream& operator<<(std::ostream &, const GumballMachine &);

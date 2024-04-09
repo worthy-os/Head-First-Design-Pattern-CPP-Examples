@@ -1,39 +1,35 @@
 #ifndef GUMBALL_MACHINE_H
 #define GUMBALL_MACHINE_H
-
 #include "State.h"
 #include <ostream>
 #include <memory>
+class NoQuarterState; class HasQuarterState; class SoldOutState; class We_have_a_sale_state;
 
-class NoQuarterState;
-class HasQuarterState;
-class SoldOutState;
-class SoldState;
+class GumballMachine {                              // We have a total of 4 states the context can be in.
+    int                                                    count_{};
+    std::unique_ptr<State_base_with_delegated_context_fns> sold_out_state_uptr_;        // Constructor loads with it covariant.
+    std::unique_ptr<State_base_with_delegated_context_fns> no_quarter_state_uptr_;
+    std::unique_ptr<State_base_with_delegated_context_fns> has_quarter_state_uptr_;
+    std::unique_ptr<State_base_with_delegated_context_fns> we_have_a_sale_state_uptr_;
 
-class GumballMachine {
-	friend std::ostream& operator<<(std::ostream &, const GumballMachine &);
-	public:
-		GumballMachine();
-		GumballMachine(int);
-		void insertQuarter();
-		void ejectQuarter();
-		void turnCrank();
-		void releaseBall();
-		int getCount() const;
-		void refill(int);
-		void setState(State *);
-		State* getState() const;
-		State* getNoQuarterState() const;
-		State* getHasQuarterState() const;
-		State* getSoldOutState() const;
-		State* getSoldState() const;
-	private:
-		std::unique_ptr<State> soldOutState;
-		std::unique_ptr<State> noQuarterState;
-		std::unique_ptr<State> hasQuarterState;
-		std::unique_ptr<State> soldState;
-		State *state;
-		int count = 0;
+    State_base_with_delegated_context_fns                  *current_state_ptr_{};
+public:
+    explicit GumballMachine(int);
+    void refill(int);
+    void insert_quarter();
+    void eject_quarter();
+    void turn_crank();
+    void release_ball();
+    void set_state(State_base_with_delegated_context_fns *);
+    int  get_count() const;
+
+    State_base_with_delegated_context_fns *get_current_state_ptr() const;
+
+    State_base_with_delegated_context_fns *get_no_quarter_state_uptr() const;
+    State_base_with_delegated_context_fns *get_has_quarter_state_uptr() const;
+    State_base_with_delegated_context_fns *get_sold_out_state_uptr() const;
+    State_base_with_delegated_context_fns *get_we_have_sale_state_uptr() const;
+    friend std::ostream& operator<<(std::ostream &, const GumballMachine &);
 };
 
 #endif /* GUMBALL_MACHINE_H */

@@ -2,28 +2,28 @@
 #include "SoldState.h"
 #include <iostream>
 
-SoldState::SoldState(GumballMachine *gbm) : gumballMachine(gbm) { }
+We_have_a_sale_state::We_have_a_sale_state(GumballMachine *gbm) : gumballMachine(gbm) { }
 
 void
-SoldState::insertQuarter()
+We_have_a_sale_state::insertQuarter()
 {
 	std::cout << "Please wait, we're already giving you a gumball\n";
 }
 
 void
-SoldState::ejectQuarter()
+We_have_a_sale_state::ejectQuarter()
 {
-	std::cout << "Sorry, you already turned the crank\n";
+    std::cout << "Your error, you already turned the crank\n";
 }
 
 void
-SoldState::turnCrank()
+We_have_a_sale_state::turnCrank()
 {
-	std::cout << "Turning twice doesn't get you another gumball!\n";
+    std::cout << "Your error, you may not turn twice.\n";
 }
 
 void
-SoldState::dispense()
+We_have_a_sale_state::dispense()
 {
 	gumballMachine->releaseBall();
 	if (gumballMachine->getCount() > 0)
@@ -35,10 +35,10 @@ SoldState::dispense()
 }
 
 void
-SoldState::refill() { }
+We_have_a_sale_state::refill() { }
 
 void
-SoldState::toString(std::ostream &os) const
+We_have_a_sale_state::toString(std::ostream &os) const
 {
 	os << "waiting for quarter";
 }

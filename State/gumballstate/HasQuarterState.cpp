@@ -2,40 +2,29 @@
 #include "HasQuarterState.h"
 #include <iostream>
 
-HasQuarterState::HasQuarterState(GumballMachine *gbm)
-	: gumballMachine(gbm) { }
+Has_quarter_state::Has_quarter_state(GumballMachine *gbm)
+	: gumball_machine_ptr_(gbm) { }
 
-void
-HasQuarterState::insertQuarter()
-{
+void Has_quarter_state::insert_quarter() {
 	std::cout << "You can't insert another quarter\n";
 }
 
-void
-HasQuarterState::ejectQuarter()
-{
+void Has_quarter_state::eject_quarter() {
 	std::cout << "Quarter return\n";
-	gumballMachine->setState(gumballMachine->getNoQuarterState());
+    gumball_machine_ptr_->set_state(gumball_machine_ptr_->get_no_quarter_state_uptr());
 }
 
-void
-HasQuarterState::turnCrank()
-{
-	std::cout << "You turned...\n";
-	gumballMachine->setState(gumballMachine->getSoldState());
+void Has_quarter_state::turn_crank() {
+    gumball_machine_ptr_->set_state(gumball_machine_ptr_->get_we_have_sale_state_uptr());
+    std::cout << "You turned...\n";
 }
 
-void
-HasQuarterState::dispense()
-{
+void Has_quarter_state::dispense() {
 	std::cout << "No gumball dispensed\n";
 }
 
-void
-HasQuarterState::refill() { }
+void Has_quarter_state::refill() { }
 
-void
-HasQuarterState::toString(std::ostream &os) const
-{
+void Has_quarter_state::to_string(std::ostream &os) const {
 	os << "waiting for turn of crank";
 }

@@ -14,7 +14,7 @@ GumballMachine::GumballMachine(int numberOfBalls)
 	: soldOutState(std::make_unique<SoldOutState>(this)),
 	  noQuarterState(std::make_unique<NoQuarterState>(this)),
 	  hasQuarterState(std::make_unique<HasQuarterState>(this)),
-	  soldState(std::make_unique<SoldState>(this)),
+	  soldState(std::make_unique<We_have_a_sale_state>(this)),
 	  winnerState(std::make_unique<WinnerState>(this)),
 	  count(numberOfBalls)
 {
